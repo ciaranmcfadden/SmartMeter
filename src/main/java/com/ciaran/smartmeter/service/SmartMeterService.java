@@ -43,6 +43,11 @@ public class SmartMeterService {
 
 
     public AccountDetails addNewSmartMeterReadings(AccountDetails accountDetails) {
+        /*
+        Endpoints deal with AccountDetails for input/response JSON but back end
+        makes use of SmartMeterAccount, so we must convert input to this object to perform
+        the save() and then turn it back into AccountDetails for a response
+         */
         long accountId = accountDetails.getAccountId();
 
         updateReadingType(accountDetails.getGasReadings(), accountDetails.getElecReadings());
